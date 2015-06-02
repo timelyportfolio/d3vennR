@@ -24,7 +24,7 @@ d3vennR <- function(
   # forward options using x
   x = list(
     data = data
-    , options = Filter(Negate(is.null),list(
+    , options = list(
       padding = padding
       , colours = colours
       , fontSize = fontSize
@@ -33,7 +33,7 @@ d3vennR <- function(
       #  add height and width as options also
       , width = width
       , height = height
-    ))
+    )
     , tasks = tasks
   )
 

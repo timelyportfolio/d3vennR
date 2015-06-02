@@ -7,3 +7,11 @@ dependencies:
     version: 0.1
     src: htmlwidgets/lib/venn
     script: venn.min.js
+  - name: mds
+    version: 0.1
+    src: htmlwidgets/lib/mds
+    script: mds.js
+  - name: numeric
+    version: 1.2.6
+    src: htmlwidgets/lib/numeric
+    script: numeric.min.js

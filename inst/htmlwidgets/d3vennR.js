@@ -18,19 +18,24 @@ HTMLWidgets.widget({
     var chart = venn.VennDiagram();
 
     // if options supplied then apply them to the venn diagram
-    if(x.options.length > 0){
-      x.options.map(function(opt){
-        chart[opt] = opt;
+    if( Object.keys(x.options).length > 0 ) {
+      Object.keys(x.options).map(function(opt){
+        if( !(x.options[opt]===null) && !(typeof chart[opt] === "undefined" ) ){
+          chart[opt](x.options[opt]);
+        }
       })
     }
 
     // draw the chart
     d3.select(el).datum( x.data ).call(chart);
 
+    // use expando property to add venn to the el dom
+    el.venn = chart;
+
     // set up a container for tasks to perform after completion
     //  one example would be add callbacks for event handling
     //  styling
-    if (!(typeof x.tasks === "undefined") ){
+    if (!(typeof x.tasks === "undefined" || x.tasks === null) ){
       if ( (typeof x.tasks.length === "undefined") ||
        (typeof x.tasks === "function" ) ) {
          // handle a function not enclosed in array
