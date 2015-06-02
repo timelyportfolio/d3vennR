@@ -1,15 +1,40 @@
-#' <Add Title>
+#' htmlwidget to create Venn diagrams with d3.js and venn.js
 #'
 #' <Add Description>
 #'
 #' @import htmlwidgets
 #'
 #' @export
-d3vennR <- function(message, width = NULL, height = NULL) {
+d3vennR <- function(
+  data = NULL
+  , padding = NULL, colours = NULL, fontSize = NULL
+    , duration = NULL, layoutFunction = NULL
+  , tasks = NULL
+  , width = NULL, height = NULL
+) {
+
+  # try to be smart about insuring that layoutFunction is a JavaScript function
+  #    so use htmlwidgets::JS if not already applied
+  if(!is.null(layoutFunction) &&
+     !inherits(layoutFunction,"JS_EVAL")
+  ){
+    layoutFunction = htmlwidgets::JS(layoutFunction)
+  }
 
   # forward options using x
   x = list(
-    message = message
+    data = data
+    , options = Filter(Negate(is.null),list(
+      padding = padding
+      , colours = colours
+      , fontSize = fontSize
+      , duration = duration
+      , layoutFunction = layoutFunction
+      #  add height and width as options also
+      , width = width
+      , height = height
+    ))
+    , tasks = tasks
   )
 
   # create widget

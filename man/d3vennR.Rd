@@ -2,9 +2,10 @@
 % Please edit documentation in R/d3vennR.R
 \name{d3vennR}
 \alias{d3vennR}
-\title{<Add Title>}
+\title{htmlwidget to create Venn diagrams with d3.js and venn.js}
 \usage{
-d3vennR(message, width = NULL, height = NULL)
+d3vennR(data = NULL, padding = NULL, colours = NULL, fontSize = NULL,
+  duration = NULL, layoutFunction = NULL, width = NULL, height = NULL)
 }
 \description{
 <Add Description>
