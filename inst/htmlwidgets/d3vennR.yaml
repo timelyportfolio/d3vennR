@@ -1,7 +1,9 @@
-# (uncomment to add a dependency)
-# dependencies:
-#  - name:
-#    version:
-#    src:
-#    script:
-#    stylesheet:
+dependencies:
+  - name: d3
+    version: 3.5.5
+    src: htmlwidgets/lib/d3
+    script: d3.min.js
+  - name: venn
+    version: 0.1
+    src: htmlwidgets/lib/venn
+    script: venn.min.js
