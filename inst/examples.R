@@ -309,3 +309,102 @@ d3vennR(
 function(d) { return venn.venn(d, { initialLayout: venn.classicMDSLayout });}
   '
 )
+
+
+
+## Example from VennDiagram R package
+
+library("VennDiagram")
+venn.plot <- draw.quintuple.venn(
+  area1 = 301,
+  area2 = 321,
+  area3 = 311,
+  area4 = 321,
+  area5 = 301,
+  n12 = 188,
+  n13 = 191,
+  n14 = 184,
+  n15 = 177,
+  n23 = 194,
+  n24 = 197,
+  n25 = 190,
+  n34 = 190,
+  n35 = 173,
+  n45 = 186,
+  n123 = 112,
+  n124 = 108,
+  n125 = 108,
+  n134 = 111,
+  n135 = 104,
+  n145 = 104,
+  n234 = 111,
+  n235 = 107,
+  n245 = 110,
+  n345 = 100,
+  n1234 = 61,
+  n1235 = 60,
+  n1245 = 59,
+  n1345 = 58,
+  n2345 = 57,
+  n12345 = 31,
+  category = c("A", "B", "C", "D", "E"),
+  fill = c("dodgerblue", "goldenrod1", "darkorange1", "seagreen3", "orchid3"),
+  cat.col = c("dodgerblue", "goldenrod1", "darkorange1", "seagreen3", "orchid3"),
+  cat.cex = 2,
+  margin = 0.05,
+  cex = c(1.5, 1.5, 1.5, 1.5, 1.5, 1, 0.8, 1, 0.8, 1, 0.8, 1, 0.8, 1, 0.8,
+          1, 0.55, 1, 0.55, 1, 0.55, 1, 0.55, 1, 0.55, 1, 1, 1, 1, 1, 1.5),
+  ind = TRUE
+)
+
+d3vennR(
+  data = list(
+    list(sets = list("A"), size = 301),
+    list(sets = list("B"), size = 321),
+    list(sets = list("C"), size = 311),
+    list(sets = list("D"), size = 321),
+    list(sets = list("E"), size = 301),
+    list(sets = list("A","B"), size = 188),
+    list(sets = list("A","C"), size = 191),
+    list(sets = list("A","D"), size = 184),
+    list(sets = list("A","E"), size = 177),
+    list(sets = list("B","C"), size = 194),
+    list(sets = list("B","D"), size = 197),
+    list(sets = list("B","E"), size = 190),
+    list(sets = list("C","D"), size = 190),
+    list(sets = list("C","E"), size = 173),
+    list(sets = list("D","E"), size = 186),
+    list(sets = list("A","B","C"), size = 112),
+    list(sets = list("A","B","D"), size = 108),
+    list(sets = list("A","B","E"), size = 108),
+    list(sets = list("A","C","D"), size = 111),
+    list(sets = list("A","C","E"), size = 104),
+    list(sets = list("A","D","E"), size = 104),
+    list(sets = list("B","C","D"), size = 111),
+    list(sets = list("B","C","E"), size = 107),
+    list(sets = list("B","D","E"), size = 110),
+    list(sets = list("C","D","E"), size = 100),
+    list(sets = list("A","B","C","D"), size = 61),
+    list(sets = list("A","B","C","E"), size = 60),
+    list(sets = list("A","B","D","E"), size = 59),
+    list(sets = list("A","C","D","E"), size = 58),
+    list(sets = list("B","C","D","E"), size = 57),
+    list(sets = list("A","B","C","D","E"), size = 31)
+  )
+  # feel free to skip this complicated part to match colors
+  , colours = htmlwidgets::JS(sprintf('
+d3.scale.category10().range(%s.map(function(col){return eval(col)}))
+',
+      jsonlite::toJSON(lapply(
+        c("dodgerblue", "goldenrod1", "darkorange1", "seagreen3", "orchid3")
+        ,function(color){
+          rgb <- t(col2rgb(color))
+          sprintf("d3.rgb(%s)",paste0(rgb,collapse=","))
+        }
+      ), auto_unbox=T)
+    )
+  )
+  ,layoutFunction = '
+function(d) { return venn.venn(d, { initialLayout: venn.classicMDSLayout });}
+  '
+)
