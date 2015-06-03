@@ -239,7 +239,22 @@ var div = d3.select(this);
 
 // add a tooltip
 var tooltip = d3.select("body").append("div")
-  .attr("class", "venntooltip");
+  .attr("class", "venntooltip")
+  .style("position", "absolute")
+  .style("text-align", "center")
+  .style("width", 128)
+  .style("height", 16)
+  .style("background", "#333")
+  .style("color","#ddd")
+  .style("padding","2px")
+  .style("border","0px")
+  .style("border-radius","8px")
+  .style("opacity",0);
+
+div.selectAll("path")
+  .style("stroke-opacity", 0)
+  .style("stroke", "#fff")
+  .style("stroke-width", 0)
 
 // add listeners to all the groups to display tooltip on mousover
 div.selectAll("g")
