@@ -26,6 +26,15 @@ HTMLWidgets.widget({
       })
     }
 
+    // if height and width specified then applied above
+    //   however if not, we will size based on the container div bounding box
+    if( x.options.height === null ){
+      chart.height( el.getBoundingClientRect().height );
+    }
+    if( x.options.width === null ){
+      chart.width( el.getBoundingClientRect().width );
+    }
+
     // draw the chart
     d3.select(el).datum( x.data ).call(chart);
 
