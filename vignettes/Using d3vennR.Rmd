@@ -1,0 +1,12 @@
+---
+title: "Introductory Use of d3vennR"
+author: "Kent Russell"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using d3vennR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
