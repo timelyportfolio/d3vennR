@@ -5,7 +5,8 @@
 \title{htmlwidget to create Venn diagrams with d3.js and venn.js}
 \usage{
 d3vennR(data = NULL, padding = NULL, colours = NULL, fontSize = NULL,
-  duration = NULL, layoutFunction = NULL, width = NULL, height = NULL)
+  duration = NULL, layoutFunction = NULL, tasks = NULL, width = NULL,
+  height = NULL)
 }
 \description{
 <Add Description>
